@@ -113,22 +113,7 @@ auto read_csv_persona(string filename)
 int main(int argc, const char * argv[])
 {
     
-    /* Lectura de los datos como strings
-    std::vector< std::vector<string> > cadenas = read_csv_strings("/Users/matiasmendez/Downloads/equipo1.csv");
-    
-    // Imprimir el vector
-    for (auto line : cadenas) {
-        copy(line.begin(), line.end(), ostream_iterator<string>(cout, " | "));
-    }
-    
-    cout << endl << endl;*/
-    
    
-    /* Lectura de los datos como un objeto Persona
-    vector<UserFila> personas = read_csv_persona("/Users/matiasmendez/Downloads/equipo1.csv");
-    
-    // Imprimir el vector
-    copy(personas.begin(), personas.end(), std::ostream_iterator<UserFila>(cout));*/
     
     Administrador sistema(read_csv_persona("/Users/matiasmendez/Downloads/equipo1.csv"));
     
