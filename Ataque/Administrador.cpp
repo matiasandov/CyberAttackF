@@ -126,16 +126,21 @@ void Administrador::busqNombreDestino(string nombre){
 void Administrador::busqRedInterna(){
 
     
-    int i=0;
+
    
-    //se corta el string del IP de origen
-    
-    string ip_found=registros[i].getIpD();
-    reverse(ip_found.begin(), ip_found.end());
-    int pos = ip_found.find(".");
-    string cut = ip_found.substr(pos + 1);
-    reverse(cut.begin(), cut.end());
-    cout<< cut <<endl;
+    int i=0;
+    //int size= registros.size();
+
+      while (i<size)
+      {
+      string ip_found=registros[i].getIpO();
+      reverse(ip_found.begin(), ip_found.end());
+      int pos = ip_found.find(".");
+      string cut = ip_found.substr(pos + 1);
+      reverse(cut.begin(), cut.end());
+      cout<< cut<<endl;
+      i++;
+      }
     
     
 }
