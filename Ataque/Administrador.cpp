@@ -129,7 +129,7 @@ void Administrador::busqRedInterna(){
 
    
     int i=0;
-    //int size= registros.size();
+    //lo que ocurre es que se voltea la dirección IP de origin y todo lo que está en el útilmo octeto se borra
 
       while (i<size)
       {
