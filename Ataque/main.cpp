@@ -58,7 +58,7 @@ auto read_csv_strings(string filename)
     return lineas;
 }
                 
-auto read_csv_persona(string filename)
+auto read_csv_USERFILA(string filename)
 {
     /* Crear un vector de vector de strings */
     vector<UserFila> lineas;
@@ -115,7 +115,7 @@ int main(int argc, const char * argv[])
     
    
     
-    Administrador sistema(read_csv_persona("/Users/matiasmendez/Downloads/equipo1.csv"));
+    Administrador sistema(read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv"));
     
     cout << "1. ¿Cuántos registros tiene tu archivo? \n";
     cout << sistema.contarRegistros() << endl;
