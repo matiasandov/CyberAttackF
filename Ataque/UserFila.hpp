@@ -31,6 +31,16 @@ public:
     
     //sobrecarga de operador para imrimir y poder ser ocupado en otras clases
     friend std::ostream & operator<<(std::ostream & os, const UserFila & userFila);
+    
+    string getFecha();
+    string getHora();
+    string getIpO();
+    string getPuertoO();
+    string getNombreO();
+    string getIpD();
+    string getPuertoD();
+    string getNombreD();
+    static bool fecha_asc(UserFila, UserFila);
 };
 
 

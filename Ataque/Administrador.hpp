@@ -11,19 +11,28 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "Persona.hpp"
+#include <sstream>
+#include <fstream>
+#include "UserFila.hpp"
+#include "Ordenamiento.hpp"
 #include <vector>
 using namespace std;
 
 class Administrador{
 private:
-    vector<Persona> elementos;
+    string fileName;
+    vector<UserFila> registros;
 public:
+    long int size = registros.size();
+    Administrador(vector<UserFila> r): registros(r){};
+    auto read_fila();
     int contarRegistros();
-    int contarXdia();
-    void busqNombre();
+    int contarXdia(string);
+    void busqNombre(string);
     void busqRedInterna();
-    void busqMail();
+    void mostrarMail();
+    void busqNombreDestino(string);
+    void mostrarRangoPuertosD(int, int);
     
 };
 

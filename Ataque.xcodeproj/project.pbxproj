@@ -25,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B2591D3C251C591600C3C8EF /* Ordenamiento.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Ordenamiento.hpp; sourceTree = "<group>"; };
 		B2D6FF28251A94B1005FAD92 /* Ataque */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Ataque; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D6FF2B251A94B1005FAD92 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B2D6FF35251AA0D6005FAD92 /* equipo1.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = equipo1.csv; path = ../../../../../../Downloads/equipo1.csv; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 				B2D6FF3A251BAA16005FAD92 /* UserFila.hpp */,
 				B2D6FF36251AB5B3005FAD92 /* Administrador.cpp */,
 				B2D6FF37251AB5B3005FAD92 /* Administrador.hpp */,
+				B2591D3C251C591600C3C8EF /* Ordenamiento.hpp */,
 				B2D6FF35251AA0D6005FAD92 /* equipo1.csv */,
 			);
 			path = Ataque;

@@ -11,6 +11,7 @@
 #include <fstream>
 #include <vector>
 #include "UserFila.hpp"
+#include "Administrador.hpp"
 using namespace std;
 
 auto read_csv_strings(string filename)
@@ -111,21 +112,82 @@ auto read_csv_persona(string filename)
 
 int main(int argc, const char * argv[])
 {
-    /* Lectura de los datos como strings */
+    
+    /* Lectura de los datos como strings
     std::vector< std::vector<string> > cadenas = read_csv_strings("/Users/matiasmendez/Downloads/equipo1.csv");
     
-    /* Imprimir el vector */
+    // Imprimir el vector
     for (auto line : cadenas) {
         copy(line.begin(), line.end(), ostream_iterator<string>(cout, " | "));
     }
     
-    cout << endl << endl;
+    cout << endl << endl;*/
     
-    /* Lectura de los datos como un objeto Persona */
+   
+    /* Lectura de los datos como un objeto Persona
     vector<UserFila> personas = read_csv_persona("/Users/matiasmendez/Downloads/equipo1.csv");
     
-    /* Imprimir el vector */
-    copy(personas.begin(), personas.end(), std::ostream_iterator<UserFila>(cout));
+    // Imprimir el vector
+    copy(personas.begin(), personas.end(), std::ostream_iterator<UserFila>(cout));*/
+    
+    Administrador sistema(read_csv_persona("/Users/matiasmendez/Downloads/equipo1.csv"));
+    
+    cout << "1. ¿Cuántos registros tiene tu archivo? \n";
+    cout << sistema.contarRegistros() << endl;
+    
+    cout << "2. ¿Cuántos récords hay del segundo día registrado? \n";
+    //cout << sistema.contarXdia("11-8-2020") << endl;
+    
+    //_______
+    cout << "3. ¿Alguna de las computadoras pertenece a Jeffrey, Betty, Katherine, Scott, Benjamin, Samuel o Raymond? \n";
+    
+    cout << " \nBusqueda para Jeffrey  \n";
+    sistema.busqNombre("jeffrey");
+    
+    cout << " \nBusqueda para betty  \n";
+    sistema.busqNombre("betty");
+    
+    cout << " \n Busqueda para Katherine  \n";
+    sistema.busqNombre("katherine");
+    
+    cout << " \n Busqueda para Scott  \n";
+    sistema.busqNombre("scott");
+    
+    cout << " \n Busqueda para Benjamin  \n";
+    sistema.busqNombre("benjamin");
+    
+    cout << " \n Busqueda para Samuel \n";
+    sistema.busqNombre("samuel");
+    
+    cout << " \n Busqueda para Raymond\n";
+    sistema.busqNombre("raymond");
+    
+
+    //______________
+    
+    cout << " \n 4. ¿Cuál es la dirección de la red interna de la compañía?";
+    sistema.busqRedInterna();
+    
+    cout << " \n 5. ¿Qué servicio de correo electrónico utilizan (algunas ideas: Gmail, Hotmail, Outlook, Protonmail)?";
+    //sistema.mostrarMail();
+    
+    cout << " \n 6. Considerando solamente los puertos destino ¿Qué puertos abajo del 1000 se están usando? Lista los puertos e investiga qué aplicación/servicio lo utiliza generalmente.";
+    sistema.mostrarRangoPuertosD(0, 1000);
+    
+    cout << " \n 7.  Busqueda para computadora: server.reto.com\n";
+    sistema.busqNombre("server");
+    
+    cout <<  " \n Sin embargo si buscamos por mail podemos encontrar para server.reto.com lo siguiente: " << endl;
+    sistema.busqNombreDestino("server.reto.com");
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     return 0;
 }
