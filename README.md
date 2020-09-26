@@ -1,2 +1,1 @@
-# CyberAttackF
-This program is meant to work with Abstract Data Types which is being used at the UserFila class, which is a class that take the atributes of each row of the CSV file and allows the "Adminsitrador" class to work with the ADT.
+This program is meant to work with Abstract Data Types which is being used at the UserFila class, which is a class that take the atributes of each row of the CSV file and allows the "Adminsitrador" class to work with the ADT. Finally I found out that there was a very suspicious activity of a destiny name called "server.reto.com" which turned out to be the attacker.
