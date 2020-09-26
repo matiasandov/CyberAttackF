@@ -154,7 +154,8 @@ int main(int argc, const char * argv[])
     sistema.busqRedInterna();
     
     cout << " \n 5. ¿Qué servicio de correo electrónico utilizan (algunas ideas: Gmail, Hotmail, Outlook, Protonmail)?";
-    //sistema.mostrarMail();
+    sistema.mostrarMail();
+    sistema.busqNombreDestino("protonmail.com");
     
     cout << " \n 6. Considerando solamente los puertos destino ¿Qué puertos abajo del 1000 se están usando? Lista los puertos e investiga qué aplicación/servicio lo utiliza generalmente.";
     sistema.mostrarRangoPuertosD(0, 1000);
