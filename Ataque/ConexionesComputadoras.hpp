@@ -10,5 +10,10 @@
 #define ConexionesComputadoras_hpp
 
 #include <stdio.h>
+#include "UserFila.cpp"
+#include "Administrador.hpp"
+#include "/Users/matiasmendez/Desktop/PF/Listas_Enlazadas/Listas_Enlazadas/LinkedList.hpp"
+#include "/Users/matiasmendez/Desktop/PF/Listas_Enlazadas/Stack/Stack/Stack.hpp"
+#include "/Users/matiasmendez/Desktop/PF/Listas_Enlazadas/Queue/Queue/Queue.hpp"
 
 #endif /* ConexionesComputadoras_hpp */
