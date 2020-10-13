@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B258259925340A19008B9C70 /* ConexionesComputadoras.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B258259725340A19008B9C70 /* ConexionesComputadoras.cpp */; };
+		B258259D2534B558008B9C70 /* IP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B258259B2534B558008B9C70 /* IP.cpp */; };
 		B2D6FF2C251A94B1005FAD92 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D6FF2B251A94B1005FAD92 /* main.cpp */; };
 		B2D6FF38251AB5B3005FAD92 /* Administrador.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D6FF36251AB5B3005FAD92 /* Administrador.cpp */; };
 		B2D6FF3B251BAA16005FAD92 /* UserFila.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D6FF39251BAA16005FAD92 /* UserFila.cpp */; };
@@ -29,6 +30,8 @@
 		B25825902533B5BC008B9C70 /* equipo1.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = equipo1.csv; path = ../../../../Downloads/equipo1.csv; sourceTree = "<group>"; };
 		B258259725340A19008B9C70 /* ConexionesComputadoras.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConexionesComputadoras.cpp; sourceTree = "<group>"; };
 		B258259825340A19008B9C70 /* ConexionesComputadoras.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConexionesComputadoras.hpp; sourceTree = "<group>"; };
+		B258259B2534B558008B9C70 /* IP.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IP.cpp; sourceTree = "<group>"; };
+		B258259C2534B558008B9C70 /* IP.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IP.hpp; sourceTree = "<group>"; };
 		B2591D3C251C591600C3C8EF /* Ordenamiento.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Ordenamiento.hpp; sourceTree = "<group>"; };
 		B2D6FF28251A94B1005FAD92 /* Ataque */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Ataque; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2D6FF2B251A94B1005FAD92 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -76,6 +79,8 @@
 				B2591D3C251C591600C3C8EF /* Ordenamiento.hpp */,
 				B258259725340A19008B9C70 /* ConexionesComputadoras.cpp */,
 				B258259825340A19008B9C70 /* ConexionesComputadoras.hpp */,
+				B258259B2534B558008B9C70 /* IP.cpp */,
+				B258259C2534B558008B9C70 /* IP.hpp */,
 				B25825902533B5BC008B9C70 /* equipo1.csv */,
 			);
 			path = Ataque;
@@ -138,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B258259D2534B558008B9C70 /* IP.cpp in Sources */,
 				B258259925340A19008B9C70 /* ConexionesComputadoras.cpp in Sources */,
 				B2D6FF3B251BAA16005FAD92 /* UserFila.cpp in Sources */,
 				B2D6FF38251AB5B3005FAD92 /* Administrador.cpp in Sources */,

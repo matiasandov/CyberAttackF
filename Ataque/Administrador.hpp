@@ -19,7 +19,7 @@
 using namespace std;
 
 class Administrador{
-private:
+protected:
     string fileName;
     vector<UserFila> registros;
 public:

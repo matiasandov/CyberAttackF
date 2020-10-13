@@ -83,7 +83,7 @@ int Administrador::contarXdia(string dia ){
     //registros = Ordenamiento<UserFila>::quicksort(registros,0, tam, UserFila::fecha_asc);
     
     //usamos ordenamiento por sleccion porque fue más rápido ne esta coasion que quicksort y mergesort
-    registros = Ordenamiento<UserFila>::seleccion(registros, UserFila::fecha_asc);
+   
     
     int cont = 0;
     
