@@ -23,6 +23,7 @@ private:
 public:
     IP(string,string,string);
     string getIpCortada();
+    string getIpOriginal();
 };
 
 #endif /* IP_hpp */

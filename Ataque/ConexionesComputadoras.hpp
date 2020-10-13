@@ -34,10 +34,10 @@ public:
     ConexionesComputadoras(string name);
     void virtual ReadClassifyConexion();
     void generarIpInterna(string);
+    void ultimaConexion();
     
     void countEntrantes();
     void countSalientes();
-    
 };
 
 

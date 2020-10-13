@@ -180,3 +180,16 @@ void ConexionesComputadoras::countEntrantes(){
 void ConexionesComputadoras::countSalientes(){
     cout << "\n Las conexiones salientes son: " << sizeof(salientes());
 }
+
+void ConexionesComputadoras::ultimaConexion(){
+    //no me deja llamar a este getter
+      string lastIP = entrantes().top()->getIpOriginal();
+    
+    if(lastIP.size() == 10){
+        cout << "\n La última conexión es :" << lastIP <<" y es interna ";
+    }
+    else{
+        cout << "\n La última conexión es :" << lastIP <<" y es externa ";
+    }
+    
+}

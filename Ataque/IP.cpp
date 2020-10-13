@@ -16,5 +16,9 @@ IP::IP(string ipOri, string ipCorta, string type){
 }
 
 string IP::getIpCortada(){
-    return IpCortada;
+    return this->IpCortada;
+}
+
+string IP::getIpOriginal(){
+    return this->IpOriginal;
 }
