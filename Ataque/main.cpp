@@ -121,7 +121,7 @@ int main(int argc, const char * argv[])
     cout << sistema.contarRegistros() << endl;
     
     cout << "2. ¿Cuántos récords hay del segundo día registrado? \n";
-    //cout << sistema.contarXdia("11-8-2020") << endl;
+    cout << sistema.contarXdia("11-8-2020") << endl;
     
     //_______
     cout << "3. ¿Alguna de las computadoras pertenece a Jeffrey, Betty, Katherine, Scott, Benjamin, Samuel o Raymond? \n";
@@ -155,7 +155,10 @@ int main(int argc, const char * argv[])
     
     cout << " \n 5. ¿Qué servicio de correo electrónico utilizan (algunas ideas: Gmail, Hotmail, Outlook, Protonmail)?";
     sistema.mostrarMail();
+<<<<<<< HEAD
     sistema.busqNombreDestino("protonmail.com");
+=======
+>>>>>>> eab2c0b67b3d6b8a47b4ca529a0090ab1598738b
     
     cout << " \n 6. Considerando solamente los puertos destino ¿Qué puertos abajo del 1000 se están usando? Lista los puertos e investiga qué aplicación/servicio lo utiliza generalmente.";
     sistema.mostrarRangoPuertosD(0, 1000);
@@ -163,7 +166,7 @@ int main(int argc, const char * argv[])
     cout << " \n 7.  Busqueda para computadora: server.reto.com\n";
     sistema.busqNombre("server");
     
-    cout <<  " \n Sin embargo si buscamos por mail podemos encontrar para server.reto.com lo siguiente: " << endl;
+    cout <<  " \n Sin embargo si buscamos por Nombre de destino podemos encontrar para server.reto.com lo siguiente: " << endl;
     sistema.busqNombreDestino("server.reto.com");
     
     
