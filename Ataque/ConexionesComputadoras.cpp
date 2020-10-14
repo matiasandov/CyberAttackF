@@ -14,66 +14,113 @@
 ConexionesComputadoras::ConexionesComputadoras(vector<UserFila> r, string IpIngresada){
     registros = r;
     
-    for (int i=0; i<registros.size() ; i++) {
+    if ( 0 < atoi(IpIngresada.c_str()) && atoi(IpIngresada.c_str()) < 150 )  {
+        IpInternaNueva = IpBase + "." + IpIngresada;
         
-        string ip_found = registros[i].getIpO();
-        reverse(ip_found.begin(), ip_found.end());
-        int pos = ip_found.find(".");
-        string cutIPorigen = ip_found.substr(pos + 1);
-        reverse(cutIPorigen.begin(), cutIPorigen.end());
-       
-     
-     
-//para cortar IP Destino y compararla
-       string ip_found2 = registros[i].getIpD();
-       reverse(ip_found2.begin(), ip_found2.end());
-       int pos2 = ip_found2.find(".");
-       string cutIPDestino = ip_found2.substr(pos2 + 1);
-       reverse(cutIPDestino.begin(), cutIPDestino.end());
-       
+        for (int i=0; i<registros.size() ; i++) {
+            
+            
+           
+        
+         /*IP(string ipOri, string ipCorta, string type)*/
+         if ( registros[i].getIpD() == IpInternaNueva){
+             entrantes.push( registros[i] );
+         }
+         
+         /*IP(string ipOri, string ipCorta, string type)*/
+         if (registros[i].getIpO() == IpInternaNueva){
+             salientes.push_back( registros[i]);
+         }
+       }
+        
+    } else{
+        cout << "\n IP interna no invalida, asegurate de ingresar un numero entre 1 y 150 ";
+    }
     
-     /*IP(string ipOri, string ipCorta, string type)*/
-     if (cutIPDestino == "10.152.206"){
-         entrantes().push( registros[i] );
-     }
-     
-     /*IP(string ipOri, string ipCorta, string type)*/
-     if (cutIPorigen == "10.152.206"){
-         salientes().enqueue( registros[i]);
-     }
-   }
+   
     
-    IpInternaNueva = IpBase + IpIngresada;
+    
+    
+    
 }
 
 
 
 //1. mientras ni una ni otra este vacia, getIPcortada 2. string nueva = getIPcortada + "." + ingresada 3. imprimir
 
-void ConexionesComputadoras::generarIpInterna(string IpIngresada){
+void ConexionesComputadoras::setIp(string nueva){
     
-    //no se como hacer para llamar la info de getIpCortada
-    string IpGenerada = IpInterna+ "." + IpIngresada ;
-    salientes().enqueue(IP(IpGenerada, IpInterna, "origen"));
+    if ( 0 < atoi(nueva.c_str()) && atoi(nueva.c_str()) < 150 )  {
+        IpInternaNueva =  IpBase + "." + nueva;
+    } else{
+        cout << "\n IP interna no invalida, asegurate de ingresar un numero entre 1 y 150 ";
+    }
+    
 }
 
+
+//1
+string ConexionesComputadoras::getIpInternaNueva(){
+    return IpInternaNueva;
+}
+
+
+//3 y 4
 void ConexionesComputadoras::countEntrantes(){
-    cout << "\n Las conexiones entrantes son: " << sizeof(entrantes());
+    cout << "\n Las conexiones entrantes son: " << sizeof(entrantes);
 }
 
 void ConexionesComputadoras::countSalientes(){
-    cout << "\n Las conexiones salientes son: " << sizeof(salientes());
+    cout << "\n Las conexiones salientes son: " << sizeof(salientes);
 }
 
 void ConexionesComputadoras::ultimaConexion(){
-    //no me deja llamar a este getter
-      string lastIP = entrantes().top()->getIpOriginal();
     
-    if(lastIP.size() == 10){
+    //no me deja llamar a este getter
+    string lastIP = this -> entrantes.top()->getInfo().getIpO() ;
+    
+    //recortar lastIp
+    
+    //esta mal creo no pelar
+    if(lastIP == IpBase ){
         cout << "\n La última conexión es :" << lastIP <<" y es interna ";
     }
     else{
         cout << "\n La última conexión es :" << lastIP <<" y es externa ";
+    }
+    
+}
+
+void ConexionesComputadoras::conexionesSeguidas(){
+    //en salientes, que prev, actual y sig sean iguales
+    
+    //temporal para guardar posicion previa
+    int cont = 0;
+        
+        //temporal que ira avanzado en la lista/ cambiar a lista mejor para no borrar lo del frente
+        /*UserFila  actual = salientes()[0];
+        
+        UserFila sig = salientes()[1];*/
+    //puerto 80 o 443 y que sea el mismo nombreDestino
+    //pisiconarme en registro y comparar con sig nombredestino y puerto destino, sino reinciar contador hasta recorrer todo la lista
+    int step = 0;
+    for (int i = 0; i <= salientes.size() && cont <=3 ; i++) {
+        step++;
+        if (salientes[i].getPuertoD() == "80" || salientes[i].getPuertoD() == "443") {
+            if ((salientes[i+1].getPuertoD() == "80" || salientes[i+1].getPuertoD() == "443")) {
+                if (salientes[i].getNombreD() ==  salientes[i+1].getNombreD()) {
+                    cont++;
+                }else{
+                    cont = 0;
+                }
+            }
+        }
+    }
+    
+    if (cont == 3) {
+        cout << "\n Se encontraron 3 conexiones seguidas para el sitio " << registros[step-2].getNombreD() ;
+    }else{
+        cout << "\n No se encontraron 3 conexiones seguidas " ;
     }
     
 }

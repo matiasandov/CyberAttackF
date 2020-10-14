@@ -23,8 +23,10 @@ private:
     vector<UserFila> registros;
     string fileName;
     
-    Stack<UserFila> entrantes();
-    Queue<UserFila> salientes();
+    //IP destino = IpBase
+    Stack<UserFila> entrantes;
+    //Ip origen = IpBase
+    vector<UserFila> salientes;
     //1. Ip interna que se esta usando
     string IpBase = "10.152.206";
     string IpInternaNueva;
@@ -32,12 +34,17 @@ private:
 public:
    
     ConexionesComputadoras(vector<UserFila>, string);
+    string getIpInternaNueva();
+    void setIp(string);
     
     void generarIpInterna(string);
     void ultimaConexion();
     
     void countEntrantes();
     void countSalientes();
+    
+    //5
+    void conexionesSeguidas();
 };
 
 
