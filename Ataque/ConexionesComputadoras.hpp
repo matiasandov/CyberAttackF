@@ -23,16 +23,16 @@ private:
     vector<UserFila> registros;
     string fileName;
     
-    Stack<IP> entrantes();
-    Queue<IP> salientes();
+    Stack<UserFila> entrantes();
+    Queue<UserFila> salientes();
     //1. Ip interna que se esta usando
-    string IpInterna;
+    string IpBase = "10.152.206";
+    string IpInternaNueva;
     
 public:
-    /*ConexionesComputadoras(vector<UserFila> r): Administrador::registros(r){};*/
-    //el nombre debera ser "/Users/matiasmendez/Downloads/equipo1.csv"
-    ConexionesComputadoras(string name);
-    void virtual ReadClassifyConexion();
+   
+    ConexionesComputadoras(vector<UserFila>, string);
+    
     void generarIpInterna(string);
     void ultimaConexion();
     
