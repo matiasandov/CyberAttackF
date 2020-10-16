@@ -31,6 +31,44 @@ public:
     
     //sobrecarga de operador para imrimir y poder ser ocupado en otras clases
     friend std::ostream & operator<<(std::ostream & os, const UserFila & userFila);
+    //asi creo pero no se si hacer varias sobre cargas de este operador para cada variable que quiero usar
+    friend std::ostream & operator<<(std::ostream & os, const UserFila & userFila);
+     
+        bool operator==(UserFila uf){
+            if (fecha==uf.fecha &&
+                hora==uf.hora &&
+                ipOrigen == uf.ipOrigen &&
+                puertoOrigen == uf.puertoOrigen &&
+                nombreOrigen == uf.nombreOrigen &&
+                ipDestino == uf.ipDestino &&
+                puertoDestino == uf.puertoDestino &&
+                nombreDestino == uf.nombreDestino)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+        }
+        bool operator!=(UserFila uf){
+            if (fecha==uf.fecha ||
+                hora==uf.hora ||
+                ipOrigen == uf.ipOrigen ||
+                puertoOrigen == uf.puertoOrigen ||
+                nombreOrigen == uf.nombreOrigen ||
+                ipDestino == uf.ipDestino ||
+                puertoDestino == uf.puertoDestino ||
+                nombreDestino == uf.nombreDestino)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+        }
+        
     
     string getFecha();
     string getHora();
