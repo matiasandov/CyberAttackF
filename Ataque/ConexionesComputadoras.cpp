@@ -12,36 +12,35 @@
 
 
 ConexionesComputadoras::ConexionesComputadoras(vector<UserFila> r, string IpIngresada){
-    registros = r;
+    this->registros = r;
     
-    if ( 0 < atoi(IpIngresada.c_str()) && atoi(IpIngresada.c_str()) < 150 )  {
-        IpInternaNueva = IpBase + "." + IpIngresada;
+    if ( 0 < atoi(IpIngresada.c_str()) && atoi(IpIngresada.c_str()) < 150 )
+    {
+        this->Ip = IpBase + "." + IpIngresada;
         
         for (int i=0; i<registros.size() ; i++) {
-            
-            
-           
         
+
          /*IP(string ipOri, string ipCorta, string type)*/
-         if ( registros[i].getIpD() == IpInternaNueva){
-             entrantes.push( registros[i] );
+         if ( registros[i].getIpD() == Ip){
+             //cout<<registros[i]<<endl;
+             entrantes.push(registros[i]);
+             
          }
-         
+
          /*IP(string ipOri, string ipCorta, string type)*/
-         if (registros[i].getIpO() == IpInternaNueva){
+         if (registros[i].getIpO() == Ip){
+             //cout<<registros[i]<<endl;
+             
              salientes.push_back( registros[i]);
          }
        }
         
-    } else{
+    }
+    else{
         cout << "\n IP interna no invalida, asegurate de ingresar un numero entre 1 y 150 ";
     }
-    
-   
-    
-    
-    
-    
+     
 }
 
 
@@ -51,7 +50,7 @@ ConexionesComputadoras::ConexionesComputadoras(vector<UserFila> r, string IpIngr
 void ConexionesComputadoras::setIp(string nueva){
     
     if ( 0 < atoi(nueva.c_str()) && atoi(nueva.c_str()) < 150 )  {
-        IpInternaNueva =  IpBase + "." + nueva;
+        Ip =  IpBase + "." + nueva;
     } else{
         cout << "\n IP interna no invalida, asegurate de ingresar un numero entre 1 y 150 ";
     }
@@ -61,17 +60,17 @@ void ConexionesComputadoras::setIp(string nueva){
 
 //1
 string ConexionesComputadoras::getIpInternaNueva(){
-    return IpInternaNueva;
+    return Ip;
 }
 
 
 //3 y 4
 void ConexionesComputadoras::countEntrantes(){
-    cout << "\n Las conexiones entrantes son: " << sizeof(entrantes);
+    cout << "\n Las conexiones entrantes son: " << this->entrantes.size();
 }
 
 void ConexionesComputadoras::countSalientes(){
-    cout << "\n Las conexiones salientes son: " << sizeof(salientes);
+    cout << "\n Las conexiones salientes son: " << this->salientes.size();
 }
 
 void ConexionesComputadoras::ultimaConexion(){
@@ -118,9 +117,9 @@ void ConexionesComputadoras::conexionesSeguidas(){
     }
     
     if (cont == 3) {
-        cout << "\n Se encontraron 3 conexiones seguidas para el sitio " << registros[step-2].getNombreD() ;
+        cout << "\n Se encontraron 3 conexiones seguidas para el sitio " << registros[step-2].getNombreD()<<endl ;
     }else{
-        cout << "\n No se encontraron 3 conexiones seguidas " ;
+        cout << "\n No se encontraron 3 conexiones seguidas "<<endl ;
     }
     
 }

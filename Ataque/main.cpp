@@ -115,10 +115,27 @@ int main(int argc, const char * argv[])
 {
     
    
-    ConexionesComputadoras sistema(read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv"), "5");
+  
     
+
+    
+    ConexionesComputadoras sistema(read_csv_USERFILA("equipo1.csv"),"55");
+
+
+    cout<<"Ip Utilizada: ";
+    cout<<sistema.getIp()<<endl;
+
+    cout<<"\n Ultima conexion de la computadora: ";
+    sistema.ultimaConexion();
+
+    cout<<"\n Cantidad de conexiones entrantes: ";
+    sistema.countEntrantes();
+    cout<<"\n Cantidad de conexiones salientes: ";
+    sistema.countSalientes();
+
+    cout<<"\n Conexiones seguidas ";
     sistema.conexionesSeguidas();
-    
+
   
     
     

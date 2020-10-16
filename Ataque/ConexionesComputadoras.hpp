@@ -29,13 +29,17 @@ private:
     vector<UserFila> salientes;
     //1. Ip interna que se esta usando
     string IpBase = "10.152.206";
-    string IpInternaNueva;
+    string Ip;
     
 public:
    
     ConexionesComputadoras(vector<UserFila>, string);
     string getIpInternaNueva();
     void setIp(string);
+    string getIp(){return this->Ip;}
+
+    void comp_entrantes();
+    
     
     void generarIpInterna(string);
     void ultimaConexion();
@@ -46,7 +50,6 @@ public:
     //5
     void conexionesSeguidas();
 };
-
 
 
 #endif /* ConexionesComputadoras_hpp */
