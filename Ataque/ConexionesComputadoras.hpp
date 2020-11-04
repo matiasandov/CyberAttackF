@@ -11,11 +11,13 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <map>
 #include "Administrador.hpp"
+#include "/Users/matiasmendez/Desktop/PF/ArbolBinario/ArbolBinario/BST.hpp"
 #include "/Users/matiasmendez/Desktop/PF/Listas_Enlazadas/Listas_Enlazadas/LinkedList.hpp"
 #include "/Users/matiasmendez/Desktop/PF/Listas_Enlazadas/Stack/Stack/Stack.hpp"
 #include "/Users/matiasmendez/Desktop/PF/Listas_Enlazadas/Queue/Queue/Queue.hpp"
-#include "IP.hpp"
+
 
 //no se si conexiones sea una herencia de la clase adminsitrador y con el mismo constructor o si deba ser otra dfierente 
 class ConexionesComputadoras  {
@@ -30,6 +32,8 @@ private:
     //1. Ip interna que se esta usando
     string IpBase = "10.152.206";
     string Ip;
+    
+    map <string, int> conexionesXDia;
     
 public:
    
@@ -49,7 +53,15 @@ public:
     
     //5
     void conexionesSeguidas();
+    
+    map <string, int> conexionesPorDia(string);
+    
+    void top(int n, string fecha);
+    
+    
 };
+
+
 
 
 #endif /* ConexionesComputadoras_hpp */

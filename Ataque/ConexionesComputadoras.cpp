@@ -123,3 +123,58 @@ void ConexionesComputadoras::conexionesSeguidas(){
     }
     
 }
+
+map <string, int> ConexionesComputadoras::conexionesPorDia(string dia ){
+    
+    vector<string> sitio;
+    
+    for (int i = 0; i <registros.size(); i++){
+        if(registros[i].getFecha() == dia){
+            
+           
+            //para saber sitio webd e conexion entrante?
+            if (registros[i].getNombreD() != "-" && registros[i].getNombreD() != "server.reto.com") {
+                
+              //se agregan los validos a un vector
+            sitio.push_back(registros[i].getNombreD());
+        
+            }
+        }
+        
+    }
+    
+    int tam = sitio.size();
+    
+    sort(sitio.begin(), sitio.end());
+    int cont = 0;
+    for(int i = 0; i < tam ; i++){
+        //si son iguales, se cuenta
+        if (sitio[i] == sitio[i+1]) {
+            cont++;
+        }else{
+            //si son diferentes se agrega el nombre y el numero de veces que apareció y se reincia el contador en cero
+            pair<string,int> parTemp(sitio[i], cont);
+            conexionesXDia.insert(parTemp);
+            cont = 0;
+            
+        }
+    }
+    
+    
+    return conexionesXDia;
+}//funcion
+
+void ConexionesComputadoras::top(int nTop, string fecha){
+    
+    map <string, int> conexiones = conexionesPorDia(fecha);
+    
+    BST<pair <string,int> > arbolConexiones;
+    
+    //con for insertar pares de hash tables en el arbol
+    
+    
+    
+    
+    
+};
+    

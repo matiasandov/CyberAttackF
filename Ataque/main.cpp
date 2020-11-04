@@ -119,10 +119,10 @@ int main(int argc, const char * argv[])
     
 
     
-    ConexionesComputadoras sistema(read_csv_USERFILA("equipo1.csv"),"55");
+    ConexionesComputadoras sistema(read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv"),"55");
 
 
-    cout<<"Ip Utilizada: ";
+   /* cout<<"Ip Utilizada: ";
     cout<<sistema.getIp()<<endl;
 
     cout<<"\n Ultima conexion de la computadora: ";
@@ -134,7 +134,9 @@ int main(int argc, const char * argv[])
     sistema.countSalientes();
 
     cout<<"\n Conexiones seguidas ";
-    sistema.conexionesSeguidas();
+    sistema.conexionesSeguidas();*/
+    
+    sistema.conexionesPorDia("10-8-2020");
 
   
     
@@ -148,4 +150,4 @@ int main(int argc, const char * argv[])
     
 
     return 0;
-}
+                                   }
