@@ -51,6 +51,11 @@ public:
             }
     }
     
+    /* Sobrecarga operador << */
+ 
+    friend std::ostream & operator << (std::ostream & os, const ParConexion & par);
+    
+    
     
 };
 

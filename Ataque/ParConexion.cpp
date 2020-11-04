@@ -7,3 +7,12 @@
 //
 
 #include "ParConexion.hpp"
+
+template <class T>
+std::ostream & operator << (std::ostream & os, const ParConexion & par)
+{
+    os << "\n " << par.keySitio   ;
+    os << "\n "<< par.countSitio  << endl ;
+    
+    return os;
+}

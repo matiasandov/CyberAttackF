@@ -178,9 +178,11 @@ void ConexionesComputadoras::top(int nTop, string fecha){
         }
      */
     for (auto elem : conexiones){
-        arbolConexiones.insert(ParConexion * par(elem.first, elem.second));
+        ParConexion par(elem.first, elem.second);
+        arbolConexiones.insert(par);
     }
     
+    arbolConexiones.top(nTop);
     
     
     
