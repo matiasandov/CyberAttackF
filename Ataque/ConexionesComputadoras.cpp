@@ -168,9 +168,18 @@ void ConexionesComputadoras::top(int nTop, string fecha){
     
     map <string, int> conexiones = conexionesPorDia(fecha);
     
-    BST<pair <string,int> > arbolConexiones;
+    BST<ParConexion> arbolConexiones;
     
     //con for insertar pares de hash tables en el arbol
+    
+    /*
+     for (auto elem : personas) {
+            std::cout << "Key: " << elem.first << ", Value: " << elem.second << std::endl;
+        }
+     */
+    for (auto elem : conexiones){
+        arbolConexiones.insert(ParConexion * par(elem.first, elem.second));
+    }
     
     
     
