@@ -153,6 +153,7 @@ map <string, int> ConexionesComputadoras::conexionesPorDia(string dia ){
             cont++;
         }else{
             //si son diferentes se agrega el nombre y el numero de veces que apareció y se reincia el contador en cero
+            cont = cont + 1;
             pair<string,int> parTemp(sitio[i], cont);
             conexionesXDia.insert(parTemp);
             cont = 0;

@@ -136,7 +136,8 @@ int main(int argc, const char * argv[])
     cout<<"\n Conexiones seguidas ";
     sistema.conexionesSeguidas();*/
     
-    sistema.conexionesPorDia("10-8-2020");
+    //sistema.conexionesPorDia("10-8-2020");
+    sistema.top(5, "10-8-2020");
 
   
     
