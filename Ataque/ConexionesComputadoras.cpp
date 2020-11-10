@@ -183,7 +183,10 @@ void ConexionesComputadoras::top(int nTop, string fecha){
         arbolConexiones.insert(par);
     }
     
-    arbolConexiones.top(nTop);
+    
+    //arbolConexiones.top(nTop);
+    int cont = 0;
+    arbolConexiones.topN(arbolConexiones.getRoot(), nTop, cont);
     
     
     
