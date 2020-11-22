@@ -44,7 +44,6 @@ ConexionesComputadoras::ConexionesComputadoras(vector<UserFila> r, string IpIngr
 }
 
 
-
 //1. mientras ni una ni otra este vacia, getIPcortada 2. string nueva = getIPcortada + "." + ingresada 3. imprimir
 
 void ConexionesComputadoras::setIp(string nueva){
@@ -191,5 +190,68 @@ void ConexionesComputadoras::top(int nTop, string fecha){
     
     
     
-};
+}
+
+//Funcion para rellenar grafo con conexiones a IP interna (IP base)
+Graph<string, int> ConexionesComputadoras::loadGrap_conIPs(string fecha){
+    
+    Graph<string, int> * GrafoXfecha = new Graph<string, int>();
+    
+    Vertex<string, int> * ipBase1 = new Vertex<string, int>(this->IpBase);
+    GrafoXfecha->addVertex(ipBase1);
+    
+    for (int i = 0; i <registros.size(); i++){
+        
+        //lo que ocurre es que se voltea la dirección IP de origin y todo lo que está en el útilmo octeto se borra
+        string ip_found=registros[i].getIpO();
+        reverse(ip_found.begin(), ip_found.end());
+        int pos_O = ip_found.find(".");
+        string cut_IP_Origen = ip_found.substr(pos_O + 1);
+        reverse(cut_IP_Origen.begin(), cut_IP_Origen.end());
+        
+        string ip_found_Destino =registros[i].getIpD();
+        reverse(ip_found_Destino.begin(), ip_found_Destino.end());
+        int pos_D = ip_found_Destino.find(".");
+        string cut_IP_Destino = ip_found_Destino.substr(pos_D + 1);
+        reverse(cut_IP_Destino.begin(), cut_IP_Destino.end());
+        
+        if(registros[i].getFecha() == fecha){
+            
+            if(cut_IP_Origen == IpBase && cut_IP_Destino != "-"  ){
+                
+                Vertex<string, int> * IP_Destino = new Vertex<string, int>(cut_IP_Destino);
+                GrafoXfecha->addVertex(IP_Destino);
+                GrafoXfecha->addEdge(ipBase1, IP_Destino, 1);
+            }
+            if(cut_IP_Destino == IpBase && cut_IP_Origen != "-"){
+                
+                Vertex<string, int> * IP_Origen = new Vertex<string, int>(cut_IP_Origen);
+                GrafoXfecha->addVertex(IP_Origen);
+                GrafoXfecha->addEdge(ipBase1, IP_Origen, 1);
+            }
+        }
+    }
+    return *GrafoXfecha;
+}
+
+void ConexionesComputadoras::adyacentesIPinterna(string fecha){
+    
+    //se llama a función para llenar grafos
+    Graph<string, int>  GrafoXfecha1 = loadGrap_conIPs(fecha);
+    
+    int cantidadVertex = GrafoXfecha1.nodes.size();
+    //buscar nodo de IP Base
+    for (int i = 0; i < cantidadVertex; i++) {
+        if(GrafoXfecha1.nodes[i]->getInfo() == IpBase){
+            
+            cout << " \n -----------Para la fecha: " << fecha;
+            cout << "\n Cantidad de conexiones de entrada para IP de red interna: " << GrafoXfecha1.nodes[i]->cantidadEntradas;
+            cout << "\n Cantidad de conexiones de salidad para IP de red interna: " << GrafoXfecha1.nodes[i]->cantidadSalidas;
+            cout << "\n CLAVE DE RED: " << GrafoXfecha1.nodes[i]->getInfo();
+        }
+        
+    }
+    
+    
+}
     

@@ -20,6 +20,8 @@
 
 #include "ParConexion.hpp"
 
+#include "/Users/matiasmendez/Desktop/PF/Graphs/Graphs/Graph.hpp"
+
 
 //no se si conexiones sea una herencia de la clase adminsitrador y con el mismo constructor o si deba ser otra dfierente 
 class ConexionesComputadoras  {
@@ -36,6 +38,11 @@ private:
     string Ip;
     
     map <string, int> conexionesXDia;
+    
+    //no se si cada nodo del vertex dejarlo como un string porque userfila->ipInterna es un string y Edge int  =0
+    Graph<string, int> conAxDia;
+    
+    
     
 public:
    
@@ -59,6 +66,12 @@ public:
     map <string, int> conexionesPorDia(string);
     
     void top(int n, string fecha);
+    
+    //cargar en grafo conexiones de IP Interna(Ip base)
+    Graph<string, int> loadGrap_conIPs(string fecha);
+    
+    //método para contar incidentes de entrada y de salida
+    void adyacentesIPinterna(string fecha);
     
     
 };
