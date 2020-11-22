@@ -68,11 +68,13 @@ public:
     void top(int n, string fecha);
     
     //cargar en grafo conexiones de IP Interna(Ip base)
-    Graph<string, int> loadGrap_conIPs(string fecha);
+    Graph<string, int> loadGrapConIPs(string fecha);
     
     //método para contar incidentes de entrada y de salida
     void adyacentesIPinterna(string fecha);
     
+    //que creara grafo para sitiweb indicado y cuente entre sitios webs
+    void graphSitiosCount(string fecha, string sitioBuscado);
     
 };
 

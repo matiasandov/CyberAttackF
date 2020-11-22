@@ -127,7 +127,9 @@ int main(int argc, const char * argv[])
     
     //cout << sistema.loadGrap_conIPs("13-8-2020");
     
-    sistema.adyacentesIPinterna("13-8-2020");
+    //sistema.adyacentesIPinterna("13-8-2020");
+    
+    sistema.graphSitiosCount("13-8-2020", "server.reto.com");
     
     
     

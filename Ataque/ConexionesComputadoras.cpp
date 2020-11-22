@@ -193,7 +193,7 @@ void ConexionesComputadoras::top(int nTop, string fecha){
 }
 
 //Funcion para rellenar grafo con conexiones a IP interna (IP base)
-Graph<string, int> ConexionesComputadoras::loadGrap_conIPs(string fecha){
+Graph<string, int> ConexionesComputadoras::loadGrapConIPs(string fecha){
     
     Graph<string, int> * GrafoXfecha = new Graph<string, int>();
     
@@ -217,6 +217,7 @@ Graph<string, int> ConexionesComputadoras::loadGrap_conIPs(string fecha){
         
         if(registros[i].getFecha() == fecha){
             
+            //no se
             if(cut_IP_Origen == IpBase && cut_IP_Destino != "-"  ){
                 
                 Vertex<string, int> * IP_Destino = new Vertex<string, int>(cut_IP_Destino);
@@ -237,7 +238,7 @@ Graph<string, int> ConexionesComputadoras::loadGrap_conIPs(string fecha){
 void ConexionesComputadoras::adyacentesIPinterna(string fecha){
     
     //se llama a función para llenar grafos
-    Graph<string, int>  GrafoXfecha1 = loadGrap_conIPs(fecha);
+    Graph<string, int>  GrafoXfecha1 = loadGrapConIPs(fecha);
     
     int cantidadVertex = GrafoXfecha1.nodes.size();
     //buscar nodo de IP Base
@@ -252,6 +253,44 @@ void ConexionesComputadoras::adyacentesIPinterna(string fecha){
         
     }
     
+    //delete GrafoXfecha1;
     
 }
+
+//Funcion para rellenar grafo con conexiones a sitiosWeb
+void ConexionesComputadoras::graphSitiosCount(string fecha, string sitioBuscado){
     
+    Graph<string, int> * GrafoSitios = new Graph<string, int>();
+    
+    Vertex<string, int> * sitioPrincipal = new Vertex<string, int>(sitioBuscado);
+    //se creara vertice para el sitio que nos interesa concoer conexiones
+    GrafoSitios->addVertex(sitioPrincipal);
+    
+    for (int i = 0; i <registros.size(); i++){
+        
+        if(registros[i].getFecha() == fecha && registros[i].getNombreD() == sitioBuscado && (registros[i].getPuertoD() == "80" || registros[i].getPuertoD() =="443" ) ){
+               
+            Vertex<string, int> * NombreOrigen = new Vertex<string, int>(registros[i].getNombreO());
+            GrafoSitios->addVertex(NombreOrigen);
+            GrafoSitios->addEdge(NombreOrigen, sitioPrincipal, 1);
+        }
+    
+    }
+    
+    //contar entradas
+    int cantidadVertex = GrafoSitios->nodes.size();
+    //buscar nodo de IP Base
+    for (int i = 0; i < cantidadVertex; i++) {
+        if(GrafoSitios->nodes[i]->getInfo() == sitioBuscado){
+            
+            cout << " \n -----------Para la fecha: " << fecha;
+            cout << " \n para el sitio: " << sitioBuscado;
+            cout << "\n Cantidad de conexiones de entrada:  " << GrafoSitios->nodes[i]->cantidadEntradas;
+        }
+        
+    }
+    
+    delete GrafoSitios;
+    
+    
+}
