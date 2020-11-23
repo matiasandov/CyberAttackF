@@ -39,13 +39,12 @@ private:
     
     map <string, int> conexionesXDia;
     
-    //no se si cada nodo del vertex dejarlo como un string porque userfila->ipInterna es un string y Edge int  =0
-    Graph<string, int> conAxDia;
-    
+   
     
     
 public:
    
+    ~ConexionesComputadoras();
     ConexionesComputadoras(vector<UserFila>, string);
     string getIpInternaNueva();
     void setIp(string);
@@ -68,7 +67,7 @@ public:
     void top(int n, string fecha);
     
     //cargar en grafo conexiones de IP Interna(Ip base)
-    Graph<string, int> loadGrapConIPs(string fecha);
+    Graph<string, int> * loadGrapConIPs(string fecha);
     
     //método para contar incidentes de entrada y de salida
     void adyacentesIPinterna(string fecha);

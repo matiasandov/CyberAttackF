@@ -29,6 +29,9 @@ public:
     UserFila(string f, string h, string iO, string pO, string nO, string iD, string pD, string nD):
     fecha(f), hora(h), ipOrigen(iO), puertoOrigen(pO), nombreOrigen(nO), ipDestino(iD),puertoDestino(pD), nombreDestino(nD) {}
     
+    //destructor
+    ~UserFila(){}
+    
     //sobrecarga de operador para imrimir y poder ser ocupado en otras clases
     friend std::ostream & operator<<(std::ostream & os, const UserFila & userFila);
     //asi creo pero no se si hacer varias sobre cargas de este operador para cada variable que quiero usar

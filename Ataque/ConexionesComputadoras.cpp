@@ -10,6 +10,15 @@
 //el nombre debera ser "/Users/matiasmendez/Downloads/equipo1.csv"
 
 
+ConexionesComputadoras::~ConexionesComputadoras(){
+    
+    /*for (auto v: registros) {
+        delete v;
+    }*/
+    
+    registros.clear();
+    
+}
 
 ConexionesComputadoras::ConexionesComputadoras(vector<UserFila> r, string IpIngresada){
     this->registros = r;
@@ -21,14 +30,14 @@ ConexionesComputadoras::ConexionesComputadoras(vector<UserFila> r, string IpIngr
         for (int i=0; i<registros.size() ; i++) {
         
 
-         /*IP(string ipOri, string ipCorta, string type)*/
+         
          if ( registros[i].getIpD() == Ip){
              //cout<<registros[i]<<endl;
              entrantes.push(registros[i]);
              
          }
 
-         /*IP(string ipOri, string ipCorta, string type)*/
+         
          if (registros[i].getIpO() == Ip){
              //cout<<registros[i]<<endl;
              
@@ -193,67 +202,82 @@ void ConexionesComputadoras::top(int nTop, string fecha){
 }
 
 //Funcion para rellenar grafo con conexiones a IP interna (IP base)
-Graph<string, int> ConexionesComputadoras::loadGrapConIPs(string fecha){
+Graph<string, int> * ConexionesComputadoras::loadGrapConIPs(string fecha){
     
     Graph<string, int> * GrafoXfecha = new Graph<string, int>();
     
-    Vertex<string, int> * ipBase1 = new Vertex<string, int>(this->IpBase);
+    Vertex<string, int> * ipBase1 = new Vertex<string, int>(this->Ip);
     GrafoXfecha->addVertex(ipBase1);
     
     for (int i = 0; i <registros.size(); i++){
         
-        //lo que ocurre es que se voltea la dirección IP de origin y todo lo que está en el útilmo octeto se borra
-        string ip_found=registros[i].getIpO();
-        reverse(ip_found.begin(), ip_found.end());
-        int pos_O = ip_found.find(".");
-        string cut_IP_Origen = ip_found.substr(pos_O + 1);
-        reverse(cut_IP_Origen.begin(), cut_IP_Origen.end());
         
-        string ip_found_Destino =registros[i].getIpD();
-        reverse(ip_found_Destino.begin(), ip_found_Destino.end());
-        int pos_D = ip_found_Destino.find(".");
-        string cut_IP_Destino = ip_found_Destino.substr(pos_D + 1);
-        reverse(cut_IP_Destino.begin(), cut_IP_Destino.end());
         
         if(registros[i].getFecha() == fecha){
             
-            //no se
-            if(cut_IP_Origen == IpBase && cut_IP_Destino != "-"  ){
+            
+            if(registros[i].getIpO() == Ip && registros[i].getIpD() != "-"  ){
                 
-                Vertex<string, int> * IP_Destino = new Vertex<string, int>(cut_IP_Destino);
+                Vertex<string, int> * IP_Destino = new Vertex<string, int>(registros[i].getIpD());
                 GrafoXfecha->addVertex(IP_Destino);
                 GrafoXfecha->addEdge(ipBase1, IP_Destino, 1);
             }
-            if(cut_IP_Destino == IpBase && cut_IP_Origen != "-"){
+            if(registros[i].getIpD()  == Ip && registros[i].getIpO() != "-"){
                 
-                Vertex<string, int> * IP_Origen = new Vertex<string, int>(cut_IP_Origen);
+                Vertex<string, int> * IP_Origen = new Vertex<string, int>(registros[i].getIpO());
                 GrafoXfecha->addVertex(IP_Origen);
-                GrafoXfecha->addEdge(ipBase1, IP_Origen, 1);
+                GrafoXfecha->addEdge(IP_Origen, ipBase1, 1);
             }
         }
     }
-    return *GrafoXfecha;
+    return GrafoXfecha;
 }
 
 void ConexionesComputadoras::adyacentesIPinterna(string fecha){
     
-    //se llama a función para llenar grafos
-    Graph<string, int>  GrafoXfecha1 = loadGrapConIPs(fecha);
+   
     
-    int cantidadVertex = GrafoXfecha1.nodes.size();
+    Graph<string, int> * GrafoXfecha = new Graph<string, int>();
+    
+    Vertex<string, int> * ipBase1 = new Vertex<string, int>(this->Ip);
+    GrafoXfecha->addVertex(ipBase1);
+    
+    for (int i = 0; i <registros.size(); i++){
+        
+        if(registros[i].getFecha() == fecha){
+            
+            
+            if(registros[i].getIpO() == Ip && registros[i].getIpD() != "-"  ){
+                
+                Vertex<string, int> * IP_Destino = new Vertex<string, int>(registros[i].getIpD());
+                GrafoXfecha->addVertex(IP_Destino);
+                GrafoXfecha->addEdge(ipBase1, IP_Destino, 1);
+            }
+            if(registros[i].getIpD()  == Ip && registros[i].getIpO() != "-"){
+                
+                Vertex<string, int> * IP_Origen = new Vertex<string, int>(registros[i].getIpO());
+                GrafoXfecha->addVertex(IP_Origen);
+                GrafoXfecha->addEdge(IP_Origen, ipBase1, 1);
+            }
+        }
+    }
+    
+    
+    
+    int cantidadVertex = GrafoXfecha->nodes.size();
     //buscar nodo de IP Base
     for (int i = 0; i < cantidadVertex; i++) {
-        if(GrafoXfecha1.nodes[i]->getInfo() == IpBase){
+        if(GrafoXfecha->nodes[i]->getInfo() == Ip){
             
             cout << " \n -----------Para la fecha: " << fecha;
-            cout << "\n Cantidad de conexiones de entrada para IP de red interna: " << GrafoXfecha1.nodes[i]->cantidadEntradas;
-            cout << "\n Cantidad de conexiones de salidad para IP de red interna: " << GrafoXfecha1.nodes[i]->cantidadSalidas;
-            cout << "\n CLAVE DE RED: " << GrafoXfecha1.nodes[i]->getInfo();
+            cout << "\n Cantidad de conexiones de entrada para IP de red interna: " << GrafoXfecha->nodes[i]->cantidadEntradas;
+            cout << "\n Cantidad de conexiones de salidad para IP de red interna: " << GrafoXfecha->nodes[i]->cantidadSalidas;
+            cout << "\n CLAVE DE RED: " << GrafoXfecha->nodes[i]->getInfo();
         }
         
     }
     
-    //delete GrafoXfecha1;
+    delete GrafoXfecha;
     
 }
 
@@ -268,11 +292,19 @@ void ConexionesComputadoras::graphSitiosCount(string fecha, string sitioBuscado)
     
     for (int i = 0; i <registros.size(); i++){
         
-        if(registros[i].getFecha() == fecha && registros[i].getNombreD() == sitioBuscado && (registros[i].getPuertoD() == "80" || registros[i].getPuertoD() =="443" ) ){
+        if(registros[i].getFecha() == fecha && registros[i].getNombreD() == sitioBuscado  ){
                
             Vertex<string, int> * NombreOrigen = new Vertex<string, int>(registros[i].getNombreO());
             GrafoSitios->addVertex(NombreOrigen);
             GrafoSitios->addEdge(NombreOrigen, sitioPrincipal, 1);
+        }
+        //hacer lo mismo para nombre de origen
+        
+        if(registros[i].getFecha() == fecha && registros[i].getNombreO() == sitioBuscado ){
+               
+            Vertex<string, int> * NombreDestino = new Vertex<string, int>(registros[i].getNombreD());
+            GrafoSitios->addVertex(NombreDestino);
+            GrafoSitios->addEdge(sitioPrincipal, NombreDestino, 1);
         }
     
     }
@@ -286,6 +318,8 @@ void ConexionesComputadoras::graphSitiosCount(string fecha, string sitioBuscado)
             cout << " \n -----------Para la fecha: " << fecha;
             cout << " \n para el sitio: " << sitioBuscado;
             cout << "\n Cantidad de conexiones de entrada:  " << GrafoSitios->nodes[i]->cantidadEntradas;
+            cout << "\n Cantidad de conexiones de salida:  " << GrafoSitios->nodes[i]->cantidadSalidas;
+
         }
         
     }

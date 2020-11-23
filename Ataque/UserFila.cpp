@@ -26,6 +26,9 @@ ostream & operator<<(std::ostream & os, const UserFila & userFila)
     return os;
 }
 
+
+
+
 string UserFila::getFecha(){
     return fecha;
 }

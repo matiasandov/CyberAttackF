@@ -119,17 +119,23 @@ int main(int argc, const char * argv[])
     
 
     
-    ConexionesComputadoras sistema(read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv"),"55");
+    ConexionesComputadoras sistema(read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv"),"122");
 
 
 
     
+  
+    cout << "-------Funcion para contar adyacentes de entrada de IP INTERNA------";
+    sistema.adyacentesIPinterna("10-8-2020");
     
-    //cout << sistema.loadGrap_conIPs("13-8-2020");
+    cout << "----Sitios anomalos--------------";
+    sistema.graphSitiosCount("14-8-2020", "2e1ahh9sz7owhh62plis.ru");
     
-    //sistema.adyacentesIPinterna("13-8-2020");
+    sistema.graphSitiosCount("14-8-2020", "ggcau23k2wploywuvw7n.org");
     
-    sistema.graphSitiosCount("13-8-2020", "server.reto.com");
+    cout << "------------Sitio con exceso de conexiones por día ----------------";
+    sistema.graphSitiosCount("12-8-2020", "protonmail.com");
+  
     
     
     
