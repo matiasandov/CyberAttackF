@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <map>
-#include "Administrador.hpp"
+#include "UserFila.hpp"
 #include "/Users/matiasmendez/Desktop/PF/ArbolBinario/ArbolBinario/BST.hpp"
 #include "/Users/matiasmendez/Desktop/PF/Listas_Enlazadas/Listas_Enlazadas/LinkedList.hpp"
 #include "/Users/matiasmendez/Desktop/PF/Listas_Enlazadas/Stack/Stack/Stack.hpp"
@@ -45,6 +45,7 @@ private:
 public:
    
     ~ConexionesComputadoras();
+    ConexionesComputadoras(){}
     ConexionesComputadoras(vector<UserFila>, string);
     string getIpInternaNueva();
     void setIp(string);
@@ -59,7 +60,8 @@ public:
     void countEntrantes();
     void countSalientes();
     
-    //5
+    int getCantidadEntrantes();
+    
     void conexionesSeguidas();
     
     map <string, int> conexionesPorDia(string);
@@ -74,6 +76,8 @@ public:
     
     //que creara grafo para sitiweb indicado y cuente entre sitios webs
     void graphSitiosCount(string fecha, string sitioBuscado);
+    
+    friend std::ostream & operator << (std::ostream & os, const ConexionesComputadoras & conexion);
     
 };
 

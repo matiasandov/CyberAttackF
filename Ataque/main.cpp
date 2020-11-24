@@ -117,16 +117,45 @@ int main(int argc, const char * argv[])
    
   
     
-
+    /*Administrador admin(read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv"));
     
-    ConexionesComputadoras sistema(read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv"),"122");
+    admin.setDominios();*/
+    
+    
+                
+    
+   ConexionesComputadoras sistema(read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv"),"122");
 
 
 
     
   
-    cout << "-------Funcion para contar adyacentes de entrada de IP INTERNA------";
+    cout << "--------------Funcion para contar adyacentes de entrada de IP INTERNA-----------";
     sistema.adyacentesIPinterna("10-8-2020");
+    
+   
+    sistema.adyacentesIPinterna("11-8-2020");
+    
+    
+    sistema.adyacentesIPinterna("12-8-2020");
+    
+    
+    sistema.adyacentesIPinterna("13-8-2020");
+    
+    
+    sistema.adyacentesIPinterna("14-8-2020");
+    
+    
+    sistema.adyacentesIPinterna("17-8-2020");
+    
+    
+    sistema.adyacentesIPinterna("18-8-2020");
+    
+    
+    sistema.adyacentesIPinterna("19-8-2020");
+    
+    
+    sistema.adyacentesIPinterna("20-8-2020");
     
     cout << "----Sitios anomalos--------------";
     sistema.graphSitiosCount("14-8-2020", "2e1ahh9sz7owhh62plis.ru");
@@ -134,23 +163,18 @@ int main(int argc, const char * argv[])
     sistema.graphSitiosCount("14-8-2020", "ggcau23k2wploywuvw7n.org");
     
     cout << "------------Sitio con exceso de conexiones por día ----------------";
+    sistema.graphSitiosCount("10-8-2020", "protonmail.com");
+    sistema.graphSitiosCount("11-8-2020", "protonmail.com");
     sistema.graphSitiosCount("12-8-2020", "protonmail.com");
+    sistema.graphSitiosCount("13-8-2020", "protonmail.com");
+    sistema.graphSitiosCount("17-8-2020", "protonmail.com");
+    sistema.graphSitiosCount("18-8-2020", "protonmail.com");
+    sistema.graphSitiosCount("19-8-2020", "protonmail.com");
+    sistema.graphSitiosCount("20-8-2020", "protonmail.com");
   
-    
-    
-    
-    
-
-  
-    
-    
-    
-    
-    
-    
     
     
     
 
     return 0;
-                                   }
+}

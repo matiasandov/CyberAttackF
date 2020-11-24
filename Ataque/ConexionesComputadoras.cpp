@@ -77,6 +77,11 @@ void ConexionesComputadoras::countEntrantes(){
     cout << "\n Las conexiones entrantes son: " << this->entrantes.size();
 }
 
+int  ConexionesComputadoras::getCantidadEntrantes(){
+    return this->entrantes.size();
+}
+
+
 void ConexionesComputadoras::countSalientes(){
     cout << "\n Las conexiones salientes son: " << this->salientes.size();
 }
@@ -104,10 +109,7 @@ void ConexionesComputadoras::conexionesSeguidas(){
     //temporal para guardar posicion previa
     int cont = 0;
         
-        //temporal que ira avanzado en la lista/ cambiar a lista mejor para no borrar lo del frente
-        /*UserFila  actual = salientes()[0];
         
-        UserFila sig = salientes()[1];*/
     //puerto 80 o 443 y que sea el mismo nombreDestino
     //pisiconarme en registro y comparar con sig nombredestino y puerto destino, sino reinciar contador hasta recorrer todo la lista
     int step = 0;
@@ -211,10 +213,7 @@ Graph<string, int> * ConexionesComputadoras::loadGrapConIPs(string fecha){
     
     for (int i = 0; i <registros.size(); i++){
         
-        
-        
         if(registros[i].getFecha() == fecha){
-            
             
             if(registros[i].getIpO() == Ip && registros[i].getIpD() != "-"  ){
                 
@@ -238,7 +237,7 @@ void ConexionesComputadoras::adyacentesIPinterna(string fecha){
    
     
     Graph<string, int> * GrafoXfecha = new Graph<string, int>();
-    
+    //se crea vertex para la ip interna creada con el cosntructor
     Vertex<string, int> * ipBase1 = new Vertex<string, int>(this->Ip);
     GrafoXfecha->addVertex(ipBase1);
     
@@ -246,13 +245,14 @@ void ConexionesComputadoras::adyacentesIPinterna(string fecha){
         
         if(registros[i].getFecha() == fecha){
             
-            
+            //si se encuentra la IP interna como Ip origen, se agrega esta como source y la Ip Destino como target
             if(registros[i].getIpO() == Ip && registros[i].getIpD() != "-"  ){
                 
                 Vertex<string, int> * IP_Destino = new Vertex<string, int>(registros[i].getIpD());
                 GrafoXfecha->addVertex(IP_Destino);
                 GrafoXfecha->addEdge(ipBase1, IP_Destino, 1);
             }
+            //aqui ocurre lo contrario
             if(registros[i].getIpD()  == Ip && registros[i].getIpO() != "-"){
                 
                 Vertex<string, int> * IP_Origen = new Vertex<string, int>(registros[i].getIpO());
@@ -265,17 +265,39 @@ void ConexionesComputadoras::adyacentesIPinterna(string fecha){
     
     
     int cantidadVertex = GrafoXfecha->nodes.size();
-    //buscar nodo de IP Base
+    
+   
     for (int i = 0; i < cantidadVertex; i++) {
         if(GrafoXfecha->nodes[i]->getInfo() == Ip){
             
             cout << " \n -----------Para la fecha: " << fecha;
             cout << "\n Cantidad de conexiones de entrada para IP de red interna: " << GrafoXfecha->nodes[i]->cantidadEntradas;
             cout << "\n Cantidad de conexiones de salidad para IP de red interna: " << GrafoXfecha->nodes[i]->cantidadSalidas;
-            cout << "\n CLAVE DE RED: " << GrafoXfecha->nodes[i]->getInfo();
+            cout << "\n Ip : " << GrafoXfecha->nodes[i]->getInfo();
         }
         
     }
+    
+    //para devovler el vertice con mas conexiones salidas hacia la IP interna
+    int comparador = 0;
+    int posicion = 0;
+    for (int i = 1; i < cantidadVertex-1; i++) {
+        
+        //se guardara la posicion del vertice con más conexiones salientes
+        if(GrafoXfecha->nodes[i]->cantidadSalidas > GrafoXfecha->nodes[i+1]->cantidadSalidas){
+            //inicias
+            comparador = GrafoXfecha->nodes[i]->cantidadSalidas;
+            posicion = i;
+        }else{
+            comparador = GrafoXfecha->nodes[i+1]->cantidadSalidas;
+            posicion = i+1;
+        }
+    }
+    
+    cout << "\n El vertice con más salidas hacia la IP interna es : " << *GrafoXfecha->nodes[posicion];
+    cout << "\n------------------------------------------------------";
+    
+    
     
     delete GrafoXfecha;
     
@@ -327,4 +349,12 @@ void ConexionesComputadoras::graphSitiosCount(string fecha, string sitioBuscado)
     delete GrafoSitios;
     
     
+}
+
+std::ostream & operator << (std::ostream & os, const ConexionesComputadoras & conexion)
+{
+    os << "\n " << conexion.Ip  ;
+    
+    
+    return os;
 }

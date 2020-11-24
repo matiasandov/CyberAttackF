@@ -66,21 +66,13 @@ void Graph<V,E>::addEdge(Vertex<V,E> * source, Vertex<V,E> * target, const E & v
     
     target->cantidadEntradas++;
     
-    /* Buscar vertex origen */
+    /* Buscar vertex origen recuerda que auto es un iteradd*/
     auto node = find(nodes.begin(), nodes.end(), source);
-    
-    //si es una auto referencia de un nodo a sí mismo
-    if(source->getInfo() == target->getInfo()){
-        //no se si aqui iria en *node en lugar de source
-        Edge<V, E> * edge = new Edge<V,E>(value, source);
+   
+        Edge<V, E> * edge = new Edge<V,E>(value, *node);
         
+        //antes tenia *node
         (*node)->addEdge(edge);
-    }else{
-        /* Crear un edge y adicionarlo al vertex */
-        Edge<V, E> * edge = new Edge<V,E>(value, target);
-        
-        (*node)->addEdge(edge);
-    }
     
     
 }

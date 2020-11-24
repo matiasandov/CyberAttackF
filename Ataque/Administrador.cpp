@@ -169,3 +169,78 @@ void Administrador::mostrarRangoPuertosD(int inf, int sup){
     cout << " Valores encontrados : " << cont << endl;
 
 }
+
+void Administrador::setDominios(){
+    
+    //rellenar conjunto
+    for (int i = 0; i < size; i++){
+        
+        if (registros[i].getNombreD() != "-" && registros[i].getNombreO() != "-") {
+            //guardo lo que hay despues del primer punto para Nombre destino y nombre origen
+            string nombreD = registros[i].getNombreD();
+            int pos = nombreD.find(".");
+            string cutNombreD = nombreD.substr(pos + 1);
+            
+            string nombreO = registros[i].getNombreO();
+            int pos2 = nombreO.find(".");
+            string cutNombreO = nombreO.substr(pos2 + 1);
+            
+            if (cutNombreO != "reto.com") {
+                dominios.insert(registros[i].getNombreO());
+            }
+            
+            if ( cutNombreD  != "reto.com") {
+                dominios.insert(registros[i].getNombreD());
+            }
+            
+        }
+    }
+    
+    //visulizar conjunto
+    set<string>::const_iterator
+            sit (dominios.begin()),
+            send(dominios.end());
+        
+        for(;sit!=send; ++sit)
+            std::cout << *sit << " \n";
+
+    
+    
+    
+}
+
+/*void Administrador::mapDominios(){
+    
+    for (int i = 0; i < size; i++){
+        
+        if (registros[i].getNombreD() != "-" && registros[i].getNombreO() != "-") {
+            
+            //recortada
+            string ip_found=registros[i].getIpO();
+            reverse(ip_found.begin(), ip_found.end());
+            int pos = ip_found.find(".");
+            string cut = ip_found.substr(pos + 1);
+            reverse(cut.begin(), cut.end());
+            
+            ConexionesComputadoras ip(this->registros, cut);
+            pair< string, ConexionesComputadoras> pActual( registros[i].getNombreO(),ip);
+            diccionarioDominios.insert(pActual);
+            
+        }
+    }
+    
+    //para checar conexiones entrantes de ip
+    map<string, ConexionesComputadoras> ::const_iterator
+            mit (diccionarioDominios.begin()),
+            mend(diccionarioDominios.end());
+        
+        for(;mit!=mend;++mit) {
+            if(mit->second.getCantidadEntrantes() > 0){
+                
+                
+                cout << mit->second;
+                
+            }
+        }
+    
+}*/

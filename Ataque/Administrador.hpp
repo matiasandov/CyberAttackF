@@ -15,13 +15,21 @@
 #include <fstream>
 #include "UserFila.hpp"
 #include "Ordenamiento.hpp"
+#include "ConexionesComputadoras.hpp"
 #include <vector>
+#include <set>
+#include <map>
+
 using namespace std;
 
 class Administrador{
 protected:
     string fileName;
     vector<UserFila> registros;
+    set<string> dominios;
+    map <string,ConexionesComputadoras> diccionarioDominios;
+   
+    
 public:
     long int size = registros.size();
     Administrador(vector<UserFila> r): registros(r){};
@@ -33,6 +41,8 @@ public:
     void mostrarMail();
     void busqNombreDestino(string);
     void mostrarRangoPuertosD(int, int);
+    void setDominios();
+    void mapDominios();
     
 };
 
