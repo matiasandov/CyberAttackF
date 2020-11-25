@@ -13,6 +13,7 @@
 #include "UserFila.hpp"
 #include "Administrador.hpp"
 #include "ConexionesComputadoras.hpp"
+#include "ConexionesComputadora2.hpp"
 using namespace std;
 
 auto read_csv_strings(string filename)
@@ -117,64 +118,61 @@ int main(int argc, const char * argv[])
    
   
     
-    /*Administrador admin(read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv"));
+    Administrador admin(read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv"));
     
-    admin.setDominios();*/
+    vector<UserFila>registros= read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv");
+    
+    cout << "------Set de dominios-------";
+    admin.setDominios();
+    cout << endl << endl;
     
     
-                
+    set<string> ips= admin.getDominios();
     
-   ConexionesComputadoras sistema(read_csv_USERFILA("/Users/matiasmendez/Downloads/equipo1.csv"),"122");
+    //para guardar las ips unicas de sitios entrantes
+    set<string> ipsUnicasEntrantes;
+    
+    map<string, ConexionesComputadoras2> mapa_conexiones;
+    for (auto i: ips)
+    {
+        int conexiones_salientes=0;
+        int conexiones_entrantes=0;
 
+        for (auto r: registros)
+        {
+            if (i==r.getNombreO())
+            {
+                conexiones_salientes++;
+            }
+            else if(i==r.getNombreD())
+            {
+                conexiones_entrantes++;
+                //para guardar las ips unicas de sitios entrantes
+                ipsUnicasEntrantes.insert(r.getIpO());
+            }
+        }
+        pair <string, ConexionesComputadoras2> par=make_pair(i,ConexionesComputadoras2(i,conexiones_entrantes,conexiones_salientes));
+        mapa_conexiones.insert(par);
+    }
 
-
+    cout << "--- Map < string, ConexionesComputadoras > ----" << std::endl;
+    map<string, ConexionesComputadoras2> ::const_iterator
+        mit (mapa_conexiones.begin()),
+        mend(mapa_conexiones.end());
     
-  
-    cout << "--------------Funcion para contar adyacentes de entrada de IP INTERNA-----------";
-    sistema.adyacentesIPinterna("10-8-2020");
+    for(;mit!=mend;++mit) {
+        cout << mit->first << ":" <<mit->second<<endl;
+    }
+        
+    cout << "---------- Ip's únicas entrantes de los nombres destino (Pregunta 4)----" << std::endl;
+        set<string>::const_iterator
+                sit (ipsUnicasEntrantes.begin()),
+                send(ipsUnicasEntrantes.end());
+            
+            for(;sit!=send; ++sit)
+                std::cout << *sit << " \n";
+        
     
-   
-    sistema.adyacentesIPinterna("11-8-2020");
-    
-    
-    sistema.adyacentesIPinterna("12-8-2020");
-    
-    
-    sistema.adyacentesIPinterna("13-8-2020");
-    
-    
-    sistema.adyacentesIPinterna("14-8-2020");
-    
-    
-    sistema.adyacentesIPinterna("17-8-2020");
-    
-    
-    sistema.adyacentesIPinterna("18-8-2020");
-    
-    
-    sistema.adyacentesIPinterna("19-8-2020");
-    
-    
-    sistema.adyacentesIPinterna("20-8-2020");
-    
-    cout << "----Sitios anomalos--------------";
-    sistema.graphSitiosCount("14-8-2020", "2e1ahh9sz7owhh62plis.ru");
-    
-    sistema.graphSitiosCount("14-8-2020", "ggcau23k2wploywuvw7n.org");
-    
-    cout << "------------Sitio con exceso de conexiones por día ----------------";
-    sistema.graphSitiosCount("10-8-2020", "protonmail.com");
-    sistema.graphSitiosCount("11-8-2020", "protonmail.com");
-    sistema.graphSitiosCount("12-8-2020", "protonmail.com");
-    sistema.graphSitiosCount("13-8-2020", "protonmail.com");
-    sistema.graphSitiosCount("17-8-2020", "protonmail.com");
-    sistema.graphSitiosCount("18-8-2020", "protonmail.com");
-    sistema.graphSitiosCount("19-8-2020", "protonmail.com");
-    sistema.graphSitiosCount("20-8-2020", "protonmail.com");
-  
-    
-    
-    
-
     return 0;
+
 }

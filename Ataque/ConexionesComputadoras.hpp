@@ -60,7 +60,8 @@ public:
     void countEntrantes();
     void countSalientes();
     
-    int getCantidadEntrantes();
+    //si no pongo el const no funciona
+    int getCantidadEntrantes() const;
     
     void conexionesSeguidas();
     

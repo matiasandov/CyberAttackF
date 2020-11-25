@@ -209,25 +209,34 @@ void Administrador::setDominios(){
     
 }
 
-/*void Administrador::mapDominios(){
+
+
+void Administrador::mapDominios(){
     
-    for (int i = 0; i < size; i++){
+    for (int i = 0; i < 10; i++){
         
-        if (registros[i].getNombreD() != "-" && registros[i].getNombreO() != "-") {
+        if (registros[i].getNombreD() != "-" && registros[i].getNombreO() != "-" && registros[i].getIpO()!= "-"  && registros[i].getIpO()!= "-" ) {
             
+            cout << "\n iniciooooo ";
             //recortada
             string ip_found=registros[i].getIpO();
-            reverse(ip_found.begin(), ip_found.end());
-            int pos = ip_found.find(".");
-            string cut = ip_found.substr(pos + 1);
-            reverse(cut.begin(), cut.end());
+            //reverse(ip_found.begin(), ip_found.end());
+            int pos = 11;
+            string cut = ip_found.substr(pos );
+            //reverse(cut.begin(), cut.end());
             
-            ConexionesComputadoras ip(this->registros, cut);
+            
+            ConexionesComputadoras ip(registros, cut);
             pair< string, ConexionesComputadoras> pActual( registros[i].getNombreO(),ip);
             diccionarioDominios.insert(pActual);
             
+           
+            cout << "\n IP RECORTADA : " << cut;
+           
         }
     }
+    
+
     
     //para checar conexiones entrantes de ip
     map<string, ConexionesComputadoras> ::const_iterator
@@ -236,11 +245,13 @@ void Administrador::setDominios(){
         
         for(;mit!=mend;++mit) {
             if(mit->second.getCantidadEntrantes() > 0){
-                
-                
+                cout << "\n llegue al foorrrrr";
                 cout << mit->second;
                 
+            }else{
+                cout << "\n NO se encontro conexion mayor a cero";
+                cout << "\n valor entrada: "<<mit->second.getCantidadEntrantes();
             }
         }
     
-}*/
+}

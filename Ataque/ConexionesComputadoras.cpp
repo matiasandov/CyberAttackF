@@ -77,7 +77,7 @@ void ConexionesComputadoras::countEntrantes(){
     cout << "\n Las conexiones entrantes son: " << this->entrantes.size();
 }
 
-int  ConexionesComputadoras::getCantidadEntrantes(){
+int ConexionesComputadoras::getCantidadEntrantes() const {
     return this->entrantes.size();
 }
 

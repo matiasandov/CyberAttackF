@@ -31,6 +31,7 @@
 		B233098425533A310065A8B8 /* ParConexion.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParConexion.hpp; sourceTree = "<group>"; };
 		B2330987255641160065A8B8 /* BinaryTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = BinaryTree.hpp; path = ../../ArbolBinario/ArbolBinario/BinaryTree.hpp; sourceTree = "<group>"; };
 		B23309882556413C0065A8B8 /* BST.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = BST.hpp; path = ../../ArbolBinario/ArbolBinario/BST.hpp; sourceTree = "<group>"; };
+		B23346DB256F099800A33B69 /* ConexionesComputadora2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConexionesComputadora2.hpp; sourceTree = "<group>"; };
 		B25825902533B5BC008B9C70 /* equipo1.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = equipo1.csv; path = ../../../../Downloads/equipo1.csv; sourceTree = "<group>"; };
 		B258259725340A19008B9C70 /* ConexionesComputadoras.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConexionesComputadoras.cpp; sourceTree = "<group>"; };
 		B258259825340A19008B9C70 /* ConexionesComputadoras.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ConexionesComputadoras.hpp; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 				B233098425533A310065A8B8 /* ParConexion.hpp */,
 				B2330987255641160065A8B8 /* BinaryTree.hpp */,
 				B23309882556413C0065A8B8 /* BST.hpp */,
+				B23346DB256F099800A33B69 /* ConexionesComputadora2.hpp */,
 				B25825902533B5BC008B9C70 /* equipo1.csv */,
 			);
 			path = Ataque;

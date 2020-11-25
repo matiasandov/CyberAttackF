@@ -33,6 +33,8 @@ protected:
 public:
     long int size = registros.size();
     Administrador(vector<UserFila> r): registros(r){};
+    Administrador(){}
+    ~Administrador(){}
     auto read_fila();
     int contarRegistros();
     int contarXdia(string);
@@ -42,6 +44,7 @@ public:
     void busqNombreDestino(string);
     void mostrarRangoPuertosD(int, int);
     void setDominios();
+    set<string> getDominios(){return this->dominios;}
     void mapDominios();
     
 };
